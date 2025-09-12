@@ -1,0 +1,1 @@
+# Galiari-Store

@@ -1,0 +1,15 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="#111827" stroke="#ec4899" stroke-width="1.5"/>
+  
+  <!-- Elegant heart -->
+  <path d="M32 48C32 48 18 36 18 26C18 20 22 16 28 16C30 16 32 18 32 20C32 18 34 16 36 16C42 16 46 20 46 26C46 36 32 48 32 48Z" fill="#ec4899"/>
+  
+  <!-- Crown on top -->
+  <path d="M28 16L32 12L36 16L34 18L30 18L28 16Z" fill="#fbbf24"/>
+  
+  <!-- Elegant dots -->
+  <circle cx="24" cy="24" r="1.5" fill="#f472b6" opacity="0.6"/>
+  <circle cx="40" cy="24" r="1.5" fill="#f472b6" opacity="0.6"/>
+  <circle cx="32" cy="20" r="1" fill="#f472b6" opacity="0.6"/>
+</svg>

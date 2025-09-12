@@ -1,0 +1,18 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="#1f2937" stroke="#ec4899" stroke-width="2"/>
+  
+  <!-- Heart shape -->
+  <path d="M32 50C32 50 20 38 20 28C20 22 24 18 30 18C32 18 32 20 32 20C32 20 32 18 34 18C40 18 44 22 44 28C44 38 32 50 32 50Z" fill="#ec4899"/>
+  
+  <!-- Rose petals -->
+  <circle cx="25" cy="25" r="3" fill="#f472b6" opacity="0.8"/>
+  <circle cx="39" cy="25" r="3" fill="#f472b6" opacity="0.8"/>
+  <circle cx="32" cy="20" r="2.5" fill="#f472b6" opacity="0.8"/>
+  
+  <!-- Sparkles -->
+  <path d="M12 12L14 14L12 16L10 14L12 12Z" fill="#fbbf24"/>
+  <path d="M52 12L54 14L52 16L50 14L52 12Z" fill="#fbbf24"/>
+  <path d="M12 52L14 54L12 56L10 54L12 52Z" fill="#fbbf24"/>
+  <path d="M52 52L54 54L52 56L50 54L52 52Z" fill="#fbbf24"/>
+</svg>
