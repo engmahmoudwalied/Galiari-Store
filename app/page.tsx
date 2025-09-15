@@ -10,7 +10,6 @@ import { Footer } from "@/components/footer"
 import { Heart } from "lucide-react"
 import {
   products,
-  getFeaturedProducts,
   searchProducts,
   sortProducts,
   filterProducts,
@@ -43,7 +42,6 @@ export default function HomePage() {
     return sortProducts(result, sortBy)
   }, [searchQuery, filters, sortBy])
 
-  const featuredProducts = getFeaturedProducts()
   const hasActiveFilters =
     filters.categories.length > 0 ||
     filters.brands.length > 0 ||
@@ -99,11 +97,7 @@ export default function HomePage() {
 
           {/* Main Content */}
           <div className="flex-1 space-y-6 sm:space-y-8">
-            {!searchQuery && !hasActiveFilters && (
-              <section>
-                <ProductGrid products={featuredProducts} title="المنتجات المميزة" />
-              </section>
-            )}
+            {/* تم إزالة قسم المنتجات المميزة */}
 
             <section>
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">

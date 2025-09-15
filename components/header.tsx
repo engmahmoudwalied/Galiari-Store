@@ -20,13 +20,29 @@ export function Header({ searchQuery, onSearchChange, onCategorySelect, activeCa
   return (
     <header className="sticky top-0 z-50 bg-black/95 backdrop-blur supports-[backdrop-filter]:bg-black/60 border-b border-gray-800">
       <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2 order-1">
-            <Heart className="h-6 w-6 sm:h-8 sm:w-8 text-rose-400" />
-            <h1 className="text-lg sm:text-2xl font-bold text-rose-400">جاليرى العربى</h1>
+        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between md:gap-4">
+          {/* Top row (mobile): logo + centered compact search + menu */}
+          <div className="flex items-center justify-between order-1">
+            <div className="flex items-center gap-2">
+              <Heart className="h-6 w-6 sm:h-8 sm:w-8 text-rose-400" />
+              <h1 className="text-lg sm:text-2xl font-bold text-rose-400">جاليرى العربى</h1>
+            </div>
+            <div className="flex-1 flex justify-center px-2 md:hidden">
+              <div className="w-full max-w-[220px]">
+                <SearchSuggestions
+                  searchQuery={searchQuery}
+                  onSearchChange={onSearchChange}
+                  onSuggestionSelect={handleSuggestionSelect}
+                />
+              </div>
+            </div>
+            <div className="md:hidden">
+              <MobileMenu onCategorySelect={onCategorySelect} activeCategory={activeCategory} />
+            </div>
           </div>
 
-          <div className="flex-1 max-w-sm sm:max-w-md order-2">
+          {/* Search (desktop): centered */}
+          <div className="hidden md:block md:flex-1 md:max-w-md order-2">
             <SearchSuggestions
               searchQuery={searchQuery}
               onSearchChange={onSearchChange}
@@ -34,8 +50,8 @@ export function Header({ searchQuery, onSearchChange, onCategorySelect, activeCa
             />
           </div>
 
+          {/* Desktop nav */}
           <div className="flex items-center gap-2 order-3">
-            <MobileMenu onCategorySelect={onCategorySelect} activeCategory={activeCategory} />
             <nav className="hidden md:flex items-center gap-4 lg:gap-6">
               <Button
                 variant="ghost"

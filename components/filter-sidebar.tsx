@@ -200,7 +200,7 @@ export function FilterSidebar({ filters, onFiltersChange, onClearFilters }: Filt
       )}
 
       {/* Desktop Filter Sidebar */}
-      <Card className="hidden lg:block">
+      <Card className="hidden lg:block sticky top-24">
         <CardHeader className="pb-4">
           <CardTitle className="text-lg">المرشحات</CardTitle>
         </CardHeader>

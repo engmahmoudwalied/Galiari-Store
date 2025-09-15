@@ -35,7 +35,7 @@ export function MobileMenu({ onCategorySelect, activeCategory }: MobileMenuProps
         </SheetHeader>
         <div className="mt-6 space-y-4">
           <div>
-            <h3 className="font-semibold mb-3 text-white">الفئات</h3>
+            <h3 className="font-semibold mb-3 px-4 text-white">الفئات</h3>
             <div className="space-y-2">
               {categories.map((category) => (
                 <Button

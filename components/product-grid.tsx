@@ -1,7 +1,8 @@
 import type { Product } from "@/lib/types"
 import { ProductCard } from "./product-card"
-import { Pagination } from "./pagination"
 import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Loader2 } from "lucide-react"
 
 interface ProductGridProps {
   products: Product[]
@@ -10,13 +11,14 @@ interface ProductGridProps {
   showPagination?: boolean
 }
 
-export function ProductGrid({ 
-  products, 
-  title, 
-  itemsPerPage = 10, 
-  showPagination = true 
+export function ProductGrid({
+  products,
+  title,
+  itemsPerPage = 10,
+  showPagination = true,
 }: ProductGridProps) {
-  const [currentPage, setCurrentPage] = useState(1)
+  const [visibleCount, setVisibleCount] = useState(itemsPerPage)
+  const [isLoadingMore, setIsLoadingMore] = useState(false)
   
   if (products.length === 0) {
     return (
@@ -27,15 +29,15 @@ export function ProductGrid({
     )
   }
 
-  const totalPages = Math.ceil(products.length / itemsPerPage)
-  const startIndex = (currentPage - 1) * itemsPerPage
-  const endIndex = startIndex + itemsPerPage
-  const currentProducts = products.slice(startIndex, endIndex)
+  const currentProducts = products.slice(0, visibleCount)
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page)
-    // Scroll to top when page changes
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+  const handleShowMore = () => {
+    if (isLoadingMore || visibleCount >= products.length) return
+    setIsLoadingMore(true)
+    setTimeout(() => {
+      setVisibleCount((prev) => Math.min(prev + itemsPerPage, products.length))
+      setIsLoadingMore(false)
+    }, 600)
   }
 
   return (
@@ -48,14 +50,26 @@ export function ProductGrid({
         ))}
       </div>
 
-      {showPagination && totalPages > 1 && (
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-          itemsPerPage={itemsPerPage}
-          totalItems={products.length}
-        />
+      {showPagination && visibleCount < products.length && (
+        <div className="flex justify-center mt-6">
+          <Button
+            onClick={handleShowMore}
+            variant="default"
+            size="lg"
+            disabled={isLoadingMore}
+            aria-busy={isLoadingMore}
+            className="transition-all duration-200 hover:scale-105 active:scale-95 hover:-translate-y-0.5 hover:shadow-lg px-6 py-3 text-base sm:text-lg bg-rose-600 hover:bg-rose-500 text-white rounded-xl"
+          >
+            {isLoadingMore ? (
+              <>
+                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                جاري التحميل...
+              </>
+            ) : (
+              <>اظهار المزيد</>
+            )}
+          </Button>
+        </div>
       )}
     </div>
   )
